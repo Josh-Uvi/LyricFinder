@@ -1,6 +1,6 @@
 # LyricFinder App
 
-> App that finds song lyrics using React and the Musixmatch API.
+A Simple Lyric Finder App that is built with React and the Musixmatch API.
 
 ## Quick Start
 
@@ -17,14 +17,6 @@ npm start
 # Build for production
 
 npm run build
-
-## App Info
-
-I built this app by watching Traversy Media on youtube, so credit goes to Brad Traversy.
-
-### Author
-
-Josh Uvi
 
 ### Version
 
