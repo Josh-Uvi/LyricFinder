@@ -18,6 +18,8 @@ npm start
 
 npm run build
 
+Lyric finder app built with react.js and musixmatch free api
+
 ### Version
 
 1.0.0
