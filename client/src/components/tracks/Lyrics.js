@@ -5,31 +5,26 @@ import Spinner from '../layout/Spinner';
 import Moment from 'react-moment';
 
 class Lyrics extends Component {
-  state = {
-    track: {},
-    lyrics: {}
-  };
+  constructor() {
+    super();
+    this.state = {
+      track: {},
+      lyrics: {},
+    };
+  }
 
   componentDidMount() {
     axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${
-          this.props.match.params.id
-        }&apikey=${process.env.REACT_APP_MM_KEY}`
-      )
-      .then(res => {
+      .get(`/api/lyrics?track_id=${this.props.match.params.id}`)
+      .then((res) => {
         this.setState({ lyrics: res.data.message.body.lyrics });
 
-        return axios.get(
-          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id=${
-            this.props.match.params.id
-          }&apikey=${process.env.REACT_APP_MM_KEY}`
-        );
+        return axios.get(`/api/track?track_id=${this.props.match.params.id}`);
       })
-      .then(res => {
+      .then((res) => {
         this.setState({ track: res.data.message.body.track });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   render() {
