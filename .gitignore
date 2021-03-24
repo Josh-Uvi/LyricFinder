@@ -4,3 +4,5 @@ config.env
 yarn.lock
 client/node_modules
 client/yarn.lock
+client/package-lock.json
+package-lock.json
