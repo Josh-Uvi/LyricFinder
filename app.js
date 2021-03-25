@@ -4,6 +4,11 @@ const path = require('path');
 
 const { notFound } = require('./routes');
 const routes = require('./routes/api');
+const {
+  errorHandler,
+  logErrors,
+  clientErrorHandler,
+} = require('./routes/middleware');
 
 const app = express();
 
@@ -16,6 +21,11 @@ app.use(express.urlencoded(options));
 
 // routes
 app.use('/api', routes);
+
+// error handlers middlewares
+app.use(errorHandler);
+app.use(logErrors);
+app.use(clientErrorHandler);
 
 // serving react app on the server
 if (process.env.NODE_DEV === 'production') {
@@ -35,5 +45,5 @@ if (process.env.NODE_DEV === 'production') {
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
-  console.log(`Server running 🚀`);
+  console.log(`Server running on port:${port} 🚀`);
 });
